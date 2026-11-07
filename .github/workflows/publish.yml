@@ -1,0 +1,44 @@
+name: Publish ReaPack index
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: reapack-index-main
+  cancel-in-progress: false
+
+jobs:
+  reapack-index:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Configure Git identity
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+      - name: Install Pandoc
+        run: sudo apt-get update && sudo apt-get install -y pandoc
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+      - name: Install reapack-index
+        run: gem install reapack-index --no-document
+      - name: Generate and commit index.xml
+        run: reapack-index --commit
+      - name: Push generated index
+        run: |
+          if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]; then
+            git push origin HEAD:main
+          else
+            echo 'Index already up to date.'
+          fi

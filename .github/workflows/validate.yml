@@ -1,0 +1,26 @@
+name: Validate ReaPack packages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  reapack-index:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Pandoc
+        run: sudo apt-get update && sudo apt-get install -y pandoc
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+      - name: Install reapack-index
+        run: gem install reapack-index --no-document
+      - name: Validate package metadata
+        run: reapack-index --check
