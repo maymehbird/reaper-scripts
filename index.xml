@@ -1,2 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="maymehbird ReaScripts" />
+<index version="1" name="maymehbird ReaScripts" commit="e373971fec9e3ae26b2be370ca667319261dd45a">
+  <category name="Tracks">
+    <reapack name="maymehbird_Auto_Exclusive_Solo.lua" type="script" desc="Auto Exclusive Solo (click S to replace previous solos)">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Run once as a background ReaScript. Clicking a previously unsoloed track's S button will automatically unsolo tracks that were soloed before. Works in both the track control panel (TCP) and mixer (MCP). If several tracks become soloed in one operation, they are kept together. Already-soloed tracks can still be turned off normally. Safe-solo states (5 and 6) are left untouched. No third-party extensions are required.\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0.0" author="maymehbird" time="2026-11-07T02:10:01Z">
+        <changelog><![CDATA[Initial release.]]></changelog>
+        <source main="main">https://github.com/maymehbird/reaper-scripts/raw/e373971fec9e3ae26b2be370ca667319261dd45a/Tracks/maymehbird_Auto_Exclusive_Solo.lua</source>
+      </version>
+    </reapack>
+  </category>
+  <metadata>
+    <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 maymehbird ReaScripts\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 REAPER automation scripts, distributed and updated using {\field{\*\fldinst{HYPERLINK "https://reapack.com/"}}{\fldrslt{\ul
+ReaPack
+}}}
+. This is a {\b general-purpose repository}: additional scripts can be added under {\f1 Tracks/}, {\f1 Items/}, {\f1 MIDI/}, or {\f1 FX/} later without creating a separate GitHub repository.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel1 \b \fs32 Install in REAPER\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 1.\tx360\tab Install {\field{\*\fldinst{HYPERLINK "https://reapack.com/"}}{\fldrslt{\ul
+ReaPack
+}}}
+ if needed.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 2.\tx360\tab In REAPER, open {\b Extensions \u8594 ? ReaPack \u8594 ? Import repositories\u8230 ?}.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 3.\tx360\tab Import this URL: {\f1 https://raw.githubusercontent.com/maymehbird/reaper-scripts/main/index.xml}\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 4.\tx360\tab Choose {\b Extensions \u8594 ? ReaPack \u8594 ? Browse packages}, search for {\b Auto Exclusive Solo}, and install it.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 5.\tx360\tab Open {\b Actions \u8594 ? Show action list}, locate {\b Script: maymehbird_Auto_Exclusive_Solo.lua} and run it {\b once per REAPER session}.\sa180\par}
+{\pard \ql \f0 \sa180 \li720 \fi0 ReaPack installs and updates scripts, but does {\b not} start this background script automatically. To run it at every REAPER launch, optionally use the SWS/S&M extension's global startup action feature to invoke this script action.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel1 \b \fs32 Available packages\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel2 \b \fs28 Tracks / Auto Exclusive Solo\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Normal left-click on the {\b S} (Solo) button still works in TCP and MCP. When a new normal solo is detected, any previously soloed tracks are cleared automatically.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Clicking an already soloed track can turn solo off normally.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab If multiple tracks are soloed in one operation, the newly soloed group is retained.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Solo-safe states (5/6) are preserved.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Existing solo states are preserved when the script starts or when switching project tabs.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Operates on regular tracks; does not process the master track.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Other actions or scripts that change solo states can also trigger the behavior; this is a {\b solo-state watcher}, not a literal mouse-click interceptor.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab The change is applied on a subsequent REAPER UI cycle: momentary overlap is possible.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\b Status:} untested inside an actual REAPER instance. Please audition and verify your routing/solo-safe behavior before depending on it during recording or live streaming.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel1 \b \fs32 Adding packages\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 1.\tx360\tab Add a new {\f1 .lua}, {\f1 .eel}, {\f1 .py}, or {\f1 .jsfx} file in a suitable {\b category subdirectory}.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 2.\tx360\tab Put at least {\f1 @version} in the script header; include {\f1 @description}, {\f1 @author}, {\f1 @about}, and {\f1 @changelog} as appropriate.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 3.\tx360\tab Push to {\f1 main} (preferably after reviewing and merging a PR).\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 4.\tx360\tab GitHub Actions runs {\field{\*\fldinst{HYPERLINK "https://github.com/cfillion/reapack-index"}}{\fldrslt{\ul
+reapack-index
+}}}
+ to generate {\f1 index.xml}, then commits the updated index. ReaPack users can synchronize to discover updates.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 5.\tx360\tab {\b Increment {\f1 @version} when publishing a new version.} Previously indexed versions are retained.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel1 \b \fs32 CI & initial publication\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab {\f1 Validate ReaPack packages} checks package metadata on pushes and pull requests.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab {\f1 Publish ReaPack index} runs only on {\f1 main} and commits generated package metadata.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab The initial {\f1 index.xml} is an intentionally {\b empty, valid ReaPack index}. The first successful publication workflow populates it with packages and commit-specific download URLs.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab If the publish job cannot push, check {\b Settings \u8594 ? Actions \u8594 ? General \u8594 ? Workflow permissions} and repository/organization branch protection rules. GitHub Actions needs permission to write {\f1 index.xml} to {\f1 main}. If publishing through branch protection is prohibited, use a PR-based publish workflow instead of bypassing protection.\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Use a {\b public} GitHub repository for unauthenticated ReaPack clients to access {\f1 index.xml} and script download URLs. The user chooses the eventual software license; none is asserted here.\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel1 \b \fs32 Maintenance\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Files with ReaPack metadata belong in category directories. Do not manually edit generated package entries in {\f1 index.xml}. For dependency changes or behavior changes, update the script and bump {\f1 @version} in the same PR.\par}
+}
+]]></description>
+  </metadata>
+</index>
